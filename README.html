@@ -1,0 +1,37 @@
+<h1 id="c-makefile-project">C++ Makefile Project</h1>
+<p>The <a href="Makefile">Makefile</a> in this directory can be used to build and run C++ projects that include a main-driver program as well as doctests that should be run. It also defines recipes for running, testing, and debugging. This document describes how to use the makefile as well as pointers to other relevant development tools. (Feel free to report any issues you find with the instructions in this file.)</p>
+<h2 id="project-structure">Project Structure</h2>
+<p>The Makefile will expect your <code>.cpp</code> and <code>.h</code> files to be in certain places so that it can figure out file dependencies, and compile and link files as efficiently as possible. Source <code>.cpp</code> files will be compiled into <code>.o</code> files and then linked together as appropriate. Including <code>.h</code> files introduces dependencies which will be automatically detected. The subdirectories of the project are explained below:</p>
+<ul>
+<li><code>bin/</code>: generated executables will be put here (i.e. the executable main program and the test runner)</li>
+<li><code>build/</code>: intermediate compiled object files will go here (one for each <code>.cpp</code> file)</li>
+<li><code>drivers/</code>: source code for the test driver, <code>test-driver.cpp</code> (which doesn’t change from project to project), and your main program, <code>main-driver.cpp</code>, should go here.</li>
+<li><code>include/</code>: any non-standard header files, including your own <code>.h</code> files should go here</li>
+<li><code>src/</code>: all of your <code>.cpp</code> files (other than your test case files and your two driver files) should go here</li>
+<li><code>test/</code>: all of your test case <code>.cpp</code> files should go here</li>
+</ul>
+<h2 id="coding-environment">Coding Environment</h2>
+<h3 id="windows-subsystem-for-linux-wsl">Windows Subsystem for Linux (WSL)</h3>
+<p>If you are using Windows 10, you can easily get an linux environment called the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">WSL</a>.</p>
+<h3 id="cs50-ide">CS50 IDE</h3>
+<p>An alternative linux environment is freely available <a href="https://ide.cs50.io">online</a>. In order to login, you need to first get a (free) <a href="https://github.com">GitHub</a> account (you don’t actually need to create any repositories yet, however).</p>
+<h3 id="required-commandline-tools">Required Commandline Tools</h3>
+<p>From the linux terminal, make sure you have <code>make</code>, <code>g++</code>, and <code>gdb</code> by installing the <code>build-essential</code> package from the commandline as follows:</p>
+<pre class="{bash}"><code>sudo apt update
+sudo apt install build-essential</code></pre>
+<h3 id="visual-studio-code">Visual Studio Code</h3>
+<p>If you want to develop locally, <a href="https://code.visualstudio.com/download">VS Code</a> is a nice, lightweight, open-source, programming environment that is available on Windows, Linux, and Mac. Once you have installed it, open a linux commandline and run the program by typing <code>code</code>. From the <code>File</code> menu, select “Open Folder” and navigate to the folder containing this <code>README.md</code> file. This folder also has a hidden folder called <code>.vscode</code> which tells VSCode what to do when you hit the green play button to run project. In particular, it defines that if you want to run the main driver, it should first run <code>make</code> to build the executable, and then run it with the debugger. It also tells VSCode to run <code>make</code> before debugging the test driver.</p>
+<h2 id="using-the-makefile">Using the Makefile</h2>
+<p>As mentioned above, if you use VSCode, then using the built-in run mechanism will make use of the makefile indirectly. In addition, the makefile defines several targets that you can run.</p>
+<p>Run <code>make</code> from the linux commandline while in the same directory as this <code>README.md</code> file (which is also where the <code>Makefile</code> is). For example, to run the recipe for <code>test</code> you would enter <code>make test</code> from the commandline. <strong>Note:</strong> the online <code>ide.cs50.io</code> shell by default recompiles from scratch, so to make compilation faster, use <strong><code>command make</code></strong> in place of <code>make</code> when using the CS50 IDE. The <code>Makefile</code> defines recipes for the following targets:</p>
+<ul>
+<li><code>all</code> (this is the default is you just type <code>make</code>): build the main driver and test driver</li>
+<li><code>test</code>: build and run tests</li>
+<li><code>run</code>: build and run main driver program</li>
+<li><code>clean</code>: remove all generated files</li>
+<li><code>zip</code>: remove generated files and add everything else to a .zip file</li>
+<li><code>run-debug50</code>: prepare and run the debugger on the main driver for the cs50 ide</li>
+<li><code>test-debug50</code>: prepare and run the debugger on the test driver for the cs50 ide</li>
+<li><code>run-debug</code>: run the main driver in a command-line debugger called <code>gdb</code></li>
+<li><code>run-debug</code>: run the test driver in <code>gdb</code></li>
+</ul>
