@@ -11,7 +11,7 @@
 
 # compiler flags and source directories can be changed here
 CXX		  := g++
-CXXFLAGS := -Wall -Wextra -std=c++17 -ggdb -pedantic -Og
+CXXFLAGS := -Wall -Wextra -std=c++17 -ggdb -pedantic -O0
 
 TARGET_MAIN ?= main-driver
 TARGET_TEST ?= test-driver
@@ -34,7 +34,7 @@ DEPS := $(OBJS:.o=.d)
 
 INC_FLAGS ?= $(addprefix -I,$(INC_DIRS))
 
-CPPFLAGS := $(INC_FLAGS) -MMD -MP -Og
+CPPFLAGS := $(INC_FLAGS) -MMD -MP -O0
 
 .PHONY: bin test run clean
 
