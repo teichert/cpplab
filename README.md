@@ -8,6 +8,37 @@ makefile as well as pointers to other relevant development tools.
 (Feel free to report any issues you find with the instructions in this
 file.)
 
+## Quick Start
+
+1.  Setup a Linux environment. If you are on Windows 10, I recommend [the WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10). An alternative linux environment is freely available [online](https://ide.cs50.io).  In order to login, you need to first get a (free) [GitHub](https://github.com) account.
+2.  From the Linux terminal, install the compiler, debugger, git, and zip. E.g.:
+```bash
+sudo apt update
+sudo apt install build-essential gdb git zip
+```
+3.  Clone this repository:
+```bash
+git clone https://github.com/teichert/cpplab.git Lab1
+cd Lab1
+```
+4.  Try some of the make targets:
+```bash
+make test
+make run
+make zip
+```
+5. Edit the code: I recommend [Visual Studio Code](https://code.visualstudio.com/download) which is a nice, lightweight,
+open-source, programming environment that is available on Windows,
+Linux, and Mac.  Once you have installed it, open a linux commandline
+and run the program by typing `code`. From the `File` menu, select
+"Open Folder" and navigate to the folder containing this `README.md`
+file.  This folder also has a hidden folder called `.vscode` which
+tells VSCode what to do when you hit the green play button to run
+project.  In particular, it defines that if you want to run the main
+driver, it should first run `make` to build the executable, and then
+run it with the debugger.  It also tells VSCode to run `make` before
+debugging the test driver.
+
 ## Project Structure
 
 The Makefile will expect your `.cpp` and `.h` files to be in certain
@@ -30,45 +61,11 @@ detected. The subdirectories of the project are explained below:
   your two driver files) should go here
 - `test/`: all of your test case `.cpp` files should go here
 
-## Coding Environment
-
-### Windows Subsystem for Linux (WSL)
-
-If you are using Windows 10, you can easily get an linux environment called the [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-
-### CS50 IDE
-
-An alternative linux environment is freely available [online](https://ide.cs50.io).  In order to login, you need to first get a (free) [GitHub](https://github.com) account (you don't actually need to create any repositories yet, however).
-
-### Required Commandline Tools
-
-From the linux terminal, make sure you have `make`, `g++`, and `gdb` by installing the `build-essential` package from the commandline as follows:
-
-```{bash}
-sudo apt update
-sudo apt install build-essential
-```
-
-### Visual Studio Code
-
-If you want to develop locally, [VS
-Code](https://code.visualstudio.com/download) is a nice, lightweight,
-open-source, programming environment that is available on Windows,
-Linux, and Mac.  Once you have installed it, open a linux commandline
-and run the program by typing `code`. From the `File` menu, select
-"Open Folder" and navigate to the folder containing this `README.md`
-file.  This folder also has a hidden folder called `.vscode` which
-tells VSCode what to do when you hit the green play button to run
-project.  In particular, it defines that if you want to run the main
-driver, it should first run `make` to build the executable, and then
-run it with the debugger.  It also tells VSCode to run `make` before
-debugging the test driver.
-
-## Using the Makefile
+## Makefile Targets
 
 As mentioned above, if you use VSCode, then using the built-in run
 mechanism will make use of the makefile indirectly.  In addition, the
-makefile defines several targets that you can run.
+makefile defines several targets that you can run from the commandline.
 
 Run `make` from the linux commandline while in the same directory as
 this `README.md` file (which is also where the `Makefile` is).  For
